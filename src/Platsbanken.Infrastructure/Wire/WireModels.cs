@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Platsbanken.Infrastructure.Wire;
 
 // Wire-format DTOs mirroring the JobTech OpenAPI specs. Internal on purpose: the mapper is the
@@ -45,3 +47,7 @@ internal sealed record WireJobAd
 internal sealed record WireNumberOfHits(int Value);
 
 internal sealed record WireSearchResults(WireNumberOfHits? Total, List<WireJobAd>? Hits);
+
+internal sealed record WireTaxonomyConcept(
+    [property: JsonPropertyName("taxonomy/id")] string? Id,
+    [property: JsonPropertyName("taxonomy/preferred-label")] string? PreferredLabel);

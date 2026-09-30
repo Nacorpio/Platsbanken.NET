@@ -8,6 +8,7 @@ An unofficial .NET 10 client for the open job-ad APIs from Arbetsförmedlingen (
 
 - **JobSearch**: full-text and taxonomy-filtered search, get ad by id, automatic paging.
 - **JobStream**: lazy `IAsyncEnumerable<JobAd>` over the JSON Lines snapshot and change stream. Memory stays flat, even for the full snapshot.
+- **Taxonomy**: look up concept ids (municipality, region, occupation, skill and more) by label, cached in memory.
 - No API key needed. The upstream APIs are open.
 - Domain-driven layering with ports and adapters, dependency injection first, and resilience (retry, timeout, circuit breaker) built in.
 
@@ -65,7 +66,6 @@ dotnet run --project samples/Platsbanken.Sample   # live smoke test against the 
 
 ## Roadmap
 
-- Taxonomy API (`ITaxonomyProvider` with cached concept lookups)
 - JobAd Enrichments and Historical Ads
 
 ## License

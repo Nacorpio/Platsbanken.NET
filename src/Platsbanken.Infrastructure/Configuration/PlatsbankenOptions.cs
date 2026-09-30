@@ -12,6 +12,12 @@ public sealed class PlatsbankenOptions
     [Required]
     public Uri StreamBaseAddress { get; set; } = new("https://jobstream.api.jobtechdev.se/");
 
+    [Required]
+    public Uri TaxonomyBaseAddress { get; set; } = new("https://taxonomy.api.jobtechdev.se/");
+
+    /// <summary>How long a taxonomy concept type stays cached in memory.</summary>
+    public TimeSpan TaxonomyCacheDuration { get; set; } = TimeSpan.FromHours(12);
+
     /// <summary>Sent as User-Agent. Identify your application so JobTech can contact you if needed.</summary>
     [Required]
     public string UserAgent { get; set; } = "Platsbanken.NET";
