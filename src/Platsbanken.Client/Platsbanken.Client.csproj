@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Platsbanken.NET: unofficial client for Arbetsformedlingen Platsbanken job ads (JobTech APIs).</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Platsbanken.Infrastructure\Platsbanken.Infrastructure.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)../../README.md" Pack="true" PackagePath="/" Visible="false" />
+  </ItemGroup>
+</Project>

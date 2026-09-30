@@ -1,0 +1,20 @@
+name: Release
+on:
+  push:
+    tags: ["v*"]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet test --configuration Release
+      - run: dotnet pack src/Platsbanken.Client --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
+      - run: dotnet pack src/Platsbanken.Infrastructure --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
+      - run: dotnet pack src/Platsbanken.Application --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
+      - run: dotnet pack src/Platsbanken.Domain --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
+      - run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

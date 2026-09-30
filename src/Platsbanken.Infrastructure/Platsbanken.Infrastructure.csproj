@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>HTTP adapters for the JobTech JobSearch and JobStream APIs.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Platsbanken.Application\Platsbanken.Application.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" />
+    <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" />
+    <InternalsVisibleTo Include="Platsbanken.Infrastructure.Tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)../../README.md" Pack="true" PackagePath="/" Visible="false" />
+  </ItemGroup>
+</Project>
