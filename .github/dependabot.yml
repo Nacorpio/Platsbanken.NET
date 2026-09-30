@@ -4,6 +4,17 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    groups:
+      # These packages must move together, or restore fails with NU1605 (package downgrade).
+      microsoft-extensions:
+        patterns:
+          - "Microsoft.Extensions.*"
+      test-tooling:
+        patterns:
+          - "xunit*"
+          - "Microsoft.NET.Test.Sdk"
+          - "coverlet.*"
+          - "NetArchTest.*"
   - package-ecosystem: github-actions
     directory: /
     schedule:

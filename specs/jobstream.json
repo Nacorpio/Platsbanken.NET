@@ -1,0 +1,264 @@
+{
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "info": {
+    "contact": {
+      "email": null,
+      "name": "Contact: opendata@arbetsformedlingen.se",
+      "url": "https://data.arbetsformedlingen.se/"
+    },
+    "description": "## An API for retrieving all currently published job ads from the Swedish Public Employment Service\n**Useful links:**\n- [JobStream getting started](https://gitlab.com/arbetsformedlingen/job-ads/jobsearch-apis/-/blob/main/docs/GettingStartedJobStreamEN.md)\n- [JobStream Code example](https://gitlab.com/arbetsformedlingen/job-ads/getting-started-code-examples/jobstream-example)\n- [Taxonomy Getting Started](https://arbetsformedlingen.gitlab.io/taxonomy-dev/projects/jobtech-taxonomy/overview.html)\n- [Taxonomy Atlas](https://atlas.jobtechdev.se)\n- [More open data from Arbetsförmedlingen](https://data.arbetsformedlingen.se/)\n",
+    "license": {
+      "name": "Ads are licensed under CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/deed.sv"
+    },
+    "title": "JobStream",
+    "version": "2.1.1"
+  },
+  "paths": {
+    "/feed": {
+      "get": {
+        "deprecated": true,
+        "description": "Deprecated",
+        "operationId": "get_feed_legacy",
+        "parameters": [
+          {
+            "description": "Stream ads changed since datetime. Accepts datetime as YYYY-MM-DDTHH:MM:SS, for example <timestamp>",
+            "format": "date-time",
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Stream ads changed before datetime. Accepts datetime as YYYY-MM-DDTHH:MM:SS. Optional if you want to set a custom time span. Defaults to 'now' if not set.",
+            "format": "date-time",
+            "in": "query",
+            "name": "updated-before-date",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Filter stream ads by one or more occupation concept ids (from occupation, occupation_group, occupation_field).",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-concept-id",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Filter stream ads by one or more location concept ids (from municipality_concept_id, region_concept_id, country_concept_id).",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "location-concept-id",
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Technical error"
+          }
+        },
+        "tags": [
+          "Feed"
+        ]
+      }
+    },
+    "/snapshot": {
+      "get": {
+        "deprecated": true,
+        "description": "Deprecated, use the /v2/snapshot endpoint",
+        "operationId": "get_snapshot_legacy",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Technical error"
+          }
+        },
+        "tags": [
+          "Snapshot"
+        ]
+      }
+    },
+    "/stream": {
+      "get": {
+        "deprecated": true,
+        "description": "Deprecated, use the /v2/stream endpoint",
+        "operationId": "get_stream_legacy",
+        "parameters": [
+          {
+            "description": "Stream ads changed since datetime. Accepts datetime as YYYY-MM-DDTHH:MM:SS, for example <timestamp>",
+            "format": "date-time",
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Stream ads changed before datetime. Accepts datetime as YYYY-MM-DDTHH:MM:SS. Optional if you want to set a custom time span. Defaults to 'now' if not set.",
+            "format": "date-time",
+            "in": "query",
+            "name": "updated-before-date",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Filter stream ads by one or more occupation concept ids (from occupation, occupation_group, occupation_field).",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-concept-id",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Filter stream ads by one or more location concept ids (from municipality_concept_id, region_concept_id, country_concept_id).",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "location-concept-id",
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Technical error"
+          }
+        },
+        "tags": [
+          "Stream"
+        ]
+      }
+    },
+    "/v2/snapshot": {
+      "get": {
+        "description": "Ads as JSON or JSON lines.\nDownload all the ads currently published in Platsbanken.",
+        "operationId": "get_snapshot",
+        "produces": [
+          "application/json",
+          "application/jsonl"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Technical error"
+          }
+        },
+        "tags": [
+          "Snapshot"
+        ]
+      }
+    },
+    "/v2/stream": {
+      "get": {
+        "description": "Ads as JSON or JSON lines.\nDownload all the ads that has been changed (e.g. added, updated, unpublished, published) during requested time interval.\nTo get the response formatted as JSON lines make sure to send the correct accept header (application/jsonl).\n\nIf you try it out in a web browser, use a short date interval, otherwise the volume of data might cause your browser to hang.",
+        "operationId": "get_stream",
+        "parameters": [
+          {
+            "description": "Stream ads changed since datetime. Accepts datetime as YYYY-MM-DDTHH:MM:SS, for example <timestamp>",
+            "format": "date-time",
+            "in": "query",
+            "name": "updated-after",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Stream ads changed before datetime. Accepts datetime as YYYY-MM-DDTHH:MM:SS. Optional if you want to set a custom time span. Defaults to 'now' if not set.",
+            "format": "date-time",
+            "in": "query",
+            "name": "updated-before",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Filter stream ads by one or more occupation concept ids (from occupation, occupation_group, occupation_field).",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-concept-id",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Filter stream ads by one or more location concept ids (from municipality_concept_id, region_concept_id, country_concept_id).",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "location-concept-id",
+            "type": "array"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/jsonl"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Technical error"
+          }
+        },
+        "tags": [
+          "Stream"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "responses": {
+    "MaskError": {
+      "description": "When any error occurs on mask"
+    },
+    "ParseError": {
+      "description": "When a mask can't be parsed"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Start with a snapshot and keep it up to date with stream",
+      "name": "Snapshot"
+    },
+    {
+      "description": "Start with a snapshot and keep it up to date with stream",
+      "name": "Stream"
+    },
+    {
+      "description": "An Atom/xml feed of ads",
+      "name": "Feed"
+    }
+  ]
+}

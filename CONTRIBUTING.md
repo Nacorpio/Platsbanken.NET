@@ -16,3 +16,7 @@ Publishing uses NuGet trusted publishing (OIDC), so no API key is stored in GitH
 1. On nuget.org, open your account menu, then *Trusted Publishing*, and add a policy: repository owner `Nacorpio`, repository `Platsbanken.NET`, workflow file `release.yml`.
 2. In this repository, add an Actions variable `NUGET_USER` containing your nuget.org username (not your email).
 3. After the first push, request the `Platsbanken.` package ID prefix reservation on nuget.org.
+
+## Upstream spec drift
+
+`.github/workflows/spec-drift.yml` compares the live JobTech OpenAPI specs with the baselines in `specs/` every Monday and opens an issue when they differ. To handle one: read the diff, adapt the wire DTOs and mappers if needed, run `python scripts/check_specs.py --update`, and commit the new baselines together with the code change.
