@@ -7,4 +7,5 @@ namespace Platsbanken.Infrastructure.Wire;
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
 [JsonSerializable(typeof(WireJobAd))]
 [JsonSerializable(typeof(WireSearchResults))]
+[JsonSerializable(typeof(List<WireTaxonomyConcept>))]
 internal sealed partial class WireJsonContext : JsonSerializerContext;

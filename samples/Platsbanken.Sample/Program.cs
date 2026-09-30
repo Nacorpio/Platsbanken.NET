@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Platsbanken;
 using Platsbanken.Application;
 using Platsbanken.Domain.Search;
+using Platsbanken.Domain.Taxonomy;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddPlatsbanken(o => o.UserAgent = "Platsbanken.Sample");
@@ -11,7 +12,16 @@ using var host = builder.Build();
 var search = host.Services.GetRequiredService<JobSearchService>();
 var stream = host.Services.GetRequiredService<JobStreamService>();
 
-var result = await search.SearchAsync(new JobSearchCriteria { Query = "utvecklare", Limit = 3 });
+var taxonomy = host.Services.GetRequiredService<TaxonomyService>();
+var gothenburg = await taxonomy.FindByLabelAsync(ConceptType.Municipality, "Göteborg");
+Console.WriteLine($"Taxonomy: Göteborg = {gothenburg?.Id}");
+
+var result = await search.SearchAsync(new JobSearchCriteria
+{
+    Query = "utvecklare",
+    Municipalities = gothenburg is null ? [] : [gothenburg.Id],
+    Limit = 3,
+});
 Console.WriteLine($"Search: {result.Total} hits");
 foreach (var ad in result.Hits)
 {

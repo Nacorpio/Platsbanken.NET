@@ -22,6 +22,7 @@ public static class ServiceCollectionExtensions
         services.AddPlatsbankenInfrastructure(configure);
         services.TryAddTransient<JobSearchService>();
         services.TryAddTransient<JobStreamService>();
+        services.TryAddTransient<TaxonomyService>();
         return services;
     }
 }
