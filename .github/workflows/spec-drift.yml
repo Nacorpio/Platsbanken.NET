@@ -1,0 +1,39 @@
+name: Spec drift
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Compare upstream specs with baselines
+        id: check
+        run: |
+          set +e
+          python scripts/check_specs.py
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Open or update the drift issue
+        if: steps.check.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Upstream JobTech API spec changed"
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file specs-diff.md
+          else
+            gh issue create --title "$title" --body-file specs-diff.md
+          fi
+      - name: Fail on script errors
+        if: steps.check.outputs.code != '0' && steps.check.outputs.code != '1'
+        run: exit 1

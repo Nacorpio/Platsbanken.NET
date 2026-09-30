@@ -6,3 +6,7 @@ Issues and pull requests are welcome.
 - Keep the dependency rule: Domain has no dependencies, Application depends on Domain, Infrastructure on Application. Architecture tests enforce it.
 - Wire DTOs stay `internal`. Map to domain types in `Platsbanken.Infrastructure/Mapping`.
 - Add a test for every mapper fix. Real API payloads often differ from the OpenAPI spec.
+
+## Upstream spec drift
+
+`.github/workflows/spec-drift.yml` compares the live JobTech OpenAPI specs with the baselines in `specs/` every Monday and opens an issue when they differ. To handle one: read the diff, adapt the wire DTOs and mappers if needed, run `python scripts/check_specs.py --update`, and commit the new baselines together with the code change.

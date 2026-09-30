@@ -9,3 +9,4 @@ artifacts/
 *.nupkg
 *.snupkg
 .env
+specs-diff.md
