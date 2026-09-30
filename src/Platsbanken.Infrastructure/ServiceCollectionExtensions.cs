@@ -11,6 +11,7 @@ using Platsbanken.Infrastructure.Http;
 
 namespace Platsbanken.Infrastructure;
 
+/// <summary>Registration of the HTTP adapters.</summary>
 public static class ServiceCollectionExtensions
 {
     /// <summary>Registers the HTTP adapters for the JobSearch and JobStream ports.</summary>

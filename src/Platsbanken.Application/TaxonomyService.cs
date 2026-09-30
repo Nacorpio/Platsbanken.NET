@@ -6,6 +6,7 @@ namespace Platsbanken.Application;
 /// <summary>Use cases over <see cref="IJobTaxonomy"/>.</summary>
 public sealed class TaxonomyService(IJobTaxonomy taxonomy)
 {
+    /// <summary>Returns all concepts of a type.</summary>
     public Task<IReadOnlyList<Concept>> GetAsync(ConceptType type, CancellationToken cancellationToken = default)
         => taxonomy.GetConceptsAsync(type, cancellationToken);
 
