@@ -2,19 +2,43 @@ name: Release
 on:
   push:
     tags: ["v*"]
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write   # create the GitHub release
+      id-token: write   # OIDC token for NuGet trusted publishing
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
           global-json-file: global.json
-      - run: dotnet test --configuration Release
-      - run: dotnet pack src/Platsbanken.Client --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
-      - run: dotnet pack src/Platsbanken.Infrastructure --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
-      - run: dotnet pack src/Platsbanken.Application --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
-      - run: dotnet pack src/Platsbanken.Domain --configuration Release -p:Version=${GITHUB_REF_NAME#v} -o artifacts
-      - run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Test
+        run: dotnet test --configuration Release
+
+      - name: Pack
+        run: >
+          dotnet pack Platsbanken.slnx --configuration Release
+          -p:Version=${GITHUB_REF_NAME#v} --output artifacts
+
+      # Trusted publishing: exchanges the workflow OIDC token for a short-lived NuGet API key.
+      # Requires a trusted publishing policy on nuget.org and the NUGET_USER repository variable.
+      - name: NuGet login (OIDC)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+
+      - name: Push
+        run: >
+          dotnet nuget push "artifacts/*.nupkg"
+          --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
+
+      - name: GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" artifacts/*.nupkg --generate-notes
