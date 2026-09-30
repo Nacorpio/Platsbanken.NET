@@ -7,6 +7,7 @@ namespace Platsbanken.Application;
 /// <summary>Use cases over <see cref="IJobAdSearch"/>, including paging past the page-size limit.</summary>
 public sealed class JobSearchService(IJobAdSearch search)
 {
+    /// <summary>Validates the criteria and returns one page of results.</summary>
     public Task<JobSearchResult> SearchAsync(JobSearchCriteria criteria, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(criteria);
@@ -14,6 +15,7 @@ public sealed class JobSearchService(IJobAdSearch search)
         return search.SearchAsync(criteria, cancellationToken);
     }
 
+    /// <summary>Returns the ad, or null when it does not exist or has been removed.</summary>
     public Task<JobAd?> GetAsync(JobAdId id, CancellationToken cancellationToken = default)
         => search.GetAsync(id, cancellationToken);
 

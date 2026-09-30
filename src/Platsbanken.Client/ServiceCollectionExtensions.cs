@@ -6,6 +6,7 @@ using Platsbanken.Infrastructure.Configuration;
 
 namespace Platsbanken;
 
+/// <summary>Entry point for consumers: <c>services.AddPlatsbanken()</c>.</summary>
 public static class ServiceCollectionExtensions
 {
     /// <summary>

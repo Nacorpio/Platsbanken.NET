@@ -6,9 +6,11 @@ namespace Platsbanken.Application;
 /// <summary>Use cases over <see cref="IJobAdStream"/>.</summary>
 public sealed class JobStreamService(IJobAdStream stream, TimeProvider clock)
 {
+    /// <summary>Lazily enumerates all currently published ads.</summary>
     public IAsyncEnumerable<JobAd> SnapshotAsync(CancellationToken cancellationToken = default)
         => stream.SnapshotAsync(cancellationToken);
 
+    /// <summary>Lazily enumerates ads created, changed or removed inside the window.</summary>
     public IAsyncEnumerable<JobAd> StreamAsync(StreamWindow window, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(window);
