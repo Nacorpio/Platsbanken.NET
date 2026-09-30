@@ -1,0 +1,1401 @@
+{
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "ApplicationContact": {
+      "properties": {
+        "contact_type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ApplicationDetails": {
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "information": {
+          "type": "string"
+        },
+        "other": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "via_af": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "Employer": {
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "organization_number": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "workplace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "FreetextConcepts": {
+      "properties": {
+        "location": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "location_must": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "location_must_not": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "occupation": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "occupation_must": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "occupation_must_not": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "skill": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "skill_must": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "skill_must_not": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "trait": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "trait_must": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "trait_must_not": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "JobAd": {
+      "properties": {
+        "access": {
+          "type": "string"
+        },
+        "access_to_own_car": {
+          "type": "boolean"
+        },
+        "application_contacts": {
+          "$ref": "#/definitions/ApplicationContact"
+        },
+        "application_deadline": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "application_details": {
+          "$ref": "#/definitions/ApplicationDetails"
+        },
+        "description": {
+          "$ref": "#/definitions/JobAdDescription"
+        },
+        "driving_license": {
+          "items": {
+            "$ref": "#/definitions/JobTechTaxonomyItem"
+          },
+          "type": "array"
+        },
+        "driving_license_required": {
+          "type": "boolean"
+        },
+        "duration": {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        "employer": {
+          "$ref": "#/definitions/Employer"
+        },
+        "employment_type": {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        "experience_required": {
+          "type": "boolean"
+        },
+        "external_id": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "last_publication_date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "must_have": {
+          "$ref": "#/definitions/Requirements"
+        },
+        "nice_to_have": {
+          "$ref": "#/definitions/Requirements"
+        },
+        "number_of_vacancies": {
+          "type": "integer"
+        },
+        "occupation": {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        "occupation_field": {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        "occupation_group": {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        "original_id": {
+          "type": "string"
+        },
+        "publication_date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "removed": {
+          "type": "boolean"
+        },
+        "removed_date": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "salary_description": {
+          "type": "string"
+        },
+        "salary_type": {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        "scope_of_work": {
+          "$ref": "#/definitions/ScopeOfWork"
+        },
+        "source_type": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "integer"
+        },
+        "webpage_url": {
+          "type": "object"
+        },
+        "working_hours_type": {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        "workplace_address": {
+          "$ref": "#/definitions/WorkplaceAddress"
+        },
+        "workplace_addresses": {
+          "$ref": "#/definitions/WorkplaceAddress"
+        },
+        "workplace_model": {
+          "$ref": "#/definitions/JobTechTaxonomyBaseItem"
+        }
+      },
+      "type": "object"
+    },
+    "JobAdDescription": {
+      "properties": {
+        "company_information": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "string"
+        },
+        "needs": {
+          "type": "string"
+        },
+        "requirements": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "text_formatted": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "JobAdSearchResult": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/JobAd"
+        },
+        {
+          "properties": {
+            "relevance": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        }
+      ]
+    },
+    "JobTechTaxonomyBaseItem": {
+      "properties": {
+        "concept_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "JobTechTaxonomyItem": {
+      "properties": {
+        "concept_id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "legacy_ams_taxonomy_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "NumberOfHits": {
+      "properties": {
+        "value": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "Requirements": {
+      "properties": {
+        "education": {
+          "items": {
+            "$ref": "#/definitions/WeightedJobtechTaxonomyItem"
+          },
+          "type": "array"
+        },
+        "education_level": {
+          "items": {
+            "$ref": "#/definitions/WeightedJobtechTaxonomyItem"
+          },
+          "type": "array"
+        },
+        "languages": {
+          "items": {
+            "$ref": "#/definitions/WeightedJobtechTaxonomyItem"
+          },
+          "type": "array"
+        },
+        "skills": {
+          "items": {
+            "$ref": "#/definitions/WeightedJobtechTaxonomyItem"
+          },
+          "type": "array"
+        },
+        "work_experiences": {
+          "items": {
+            "$ref": "#/definitions/WeightedJobtechTaxonomyItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ScopeOfWork": {
+      "properties": {
+        "max": {
+          "type": "integer"
+        },
+        "min": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "SearchResults": {
+      "properties": {
+        "freetext_concepts": {
+          "$ref": "#/definitions/FreetextConcepts"
+        },
+        "hits": {
+          "items": {
+            "$ref": "#/definitions/JobAdSearchResult"
+          },
+          "type": "array"
+        },
+        "positions": {
+          "type": "integer"
+        },
+        "query_time_in_millis": {
+          "type": "integer"
+        },
+        "result_time_in_millis": {
+          "type": "integer"
+        },
+        "stats": {
+          "items": {
+            "$ref": "#/definitions/Stats"
+          },
+          "type": "array"
+        },
+        "total": {
+          "$ref": "#/definitions/NumberOfHits"
+        }
+      },
+      "type": "object"
+    },
+    "StatDetail": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "concept_id": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "term": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Stats": {
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "$ref": "#/definitions/StatDetail"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "TypeaheadItem": {
+      "properties": {
+        "found_phrase": {
+          "type": "string"
+        },
+        "occurrences": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "TypeaheadResults": {
+      "properties": {
+        "result_time_in_millis": {
+          "type": "integer"
+        },
+        "time_in_millis": {
+          "type": "integer"
+        },
+        "typeahead": {
+          "items": {
+            "$ref": "#/definitions/TypeaheadItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "WeightedJobtechTaxonomyItem": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/JobTechTaxonomyItem"
+        },
+        {
+          "properties": {
+            "weight": {
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        }
+      ]
+    },
+    "WorkplaceAddress": {
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "coordinates": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "country": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "country_concept_id": {
+          "type": "string"
+        },
+        "municipality": {
+          "type": "string"
+        },
+        "municipality_code": {
+          "type": "string"
+        },
+        "municipality_concept_id": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "region_code": {
+          "type": "string"
+        },
+        "region_concept_id": {
+          "type": "string"
+        },
+        "street_address": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "info": {
+    "contact": {
+      "email": null,
+      "name": "Contact: opendata@arbetsformedlingen.se",
+      "url": "https://data.arbetsformedlingen.se/"
+    },
+    "description": "## An API for searching current job ads from the Swedish Public Employment Service\n**Useful links:**\n- [Getting Started](https://gitlab.com/arbetsformedlingen/job-ads/jobsearch-apis/-/blob/main/docs/GettingStartedJobSearchEN.md)\n- [Ad fields](https://gitlab.com/arbetsformedlingen/job-ads/jobsearch/jobsearch-api/-/blob/main/docs/AdFields.md)\n- [Code examples](https://gitlab.com/arbetsformedlingen/job-ads/getting-started-code-examples/code-examples-start-here)\n- [Taxonomy Getting Started](https://arbetsformedlingen.gitlab.io/taxonomy-dev/projects/jobtech-taxonomy/overview.html)\n- [Taxonomy Atlas](https://atlas.jobtechdev.se)\n- [More open data from Arbetsförmedlingen](https://data.arbetsformedlingen.se/)\n",
+    "license": {
+      "name": "Ads are licensed under CC0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/deed.sv"
+    },
+    "title": "JobSearch",
+    "version": "1.37.0"
+  },
+  "paths": {
+    "/ad/{id}": {
+      "get": {
+        "description": "Load a job ad by ID",
+        "operationId": "get_ad_by_id",
+        "responses": {
+          "404": {
+            "description": "Job ad not found"
+          }
+        },
+        "tags": [
+          "Open AF-job ads"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/ad/{id}/logo": {
+      "get": {
+        "description": "Load a logo binary file by ID",
+        "operationId": "get_ad_logo",
+        "responses": {
+          "404": {
+            "description": "Job ad not found"
+          }
+        },
+        "tags": [
+          "Open AF-job ads"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/complete": {
+      "get": {
+        "description": "Typeahead / Suggest next searchword",
+        "operationId": "get_complete",
+        "parameters": [
+          {
+            "default": "or",
+            "description": "Boolean method to use for unclassified freetext words. Defaults to \"or\"",
+            "enum": [
+              "and",
+              "or"
+            ],
+            "in": "header",
+            "name": "x-feature-freetext-bool-method",
+            "type": "string"
+          },
+          {
+            "description": "Disables machine learning enriched queries. Freetext becomes traditional freetext query according to the setting of \"x-feature-freetext-bool-method\"",
+            "in": "header",
+            "name": "x-feature-disable-smart-freetext",
+            "type": "boolean"
+          },
+          {
+            "description": "Enables extra search for the current known term in free text to avoid false negatives",
+            "in": "header",
+            "name": "x-feature-enable-false-negative",
+            "type": "boolean"
+          },
+          {
+            "description": "Fetch job ads published before specified date and time (format YYYY-mm-ddTHH:MM:SS)",
+            "in": "query",
+            "name": "published-before",
+            "pattern": "^(\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]))|(\\d+)$",
+            "type": "string"
+          },
+          {
+            "description": "Fetch job ads published after specified date and time. Accepts either datetime (format YYYY-mm-ddTHH:MM:SS) or number of minutes (e.g 60 means published in the last hour)",
+            "in": "query",
+            "name": "published-after",
+            "pattern": "^(\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]))|(\\d+)$",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-name",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational group codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-group",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational area codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-field",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational collections according to the taxonomy. Excludes not matching occupations, groups, fields",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-collection",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more competency codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "skill",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more language codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "language",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more codes for worktime extent, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "worktime-extent",
+            "type": "array"
+          },
+          {
+            "description": "For part-time jobs, minimum extent in percent (for example 50 for 50%)",
+            "in": "query",
+            "name": "parttime.min",
+            "type": "number"
+          },
+          {
+            "description": "For part-time jobs, maximum extent in percent (for example 100 for 100%)",
+            "in": "query",
+            "name": "parttime.max",
+            "type": "number"
+          },
+          {
+            "description": "Set to true if driving licence required, false if not",
+            "in": "query",
+            "name": "driving-license-required",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more types of demanded driving licenses, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "driving-license",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Employment type, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "employment-type",
+            "type": "array"
+          },
+          {
+            "description": "Input 'false' to filter jobs that don't require experience",
+            "in": "query",
+            "name": "experience",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more municipality codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "municipality",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more region codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "region",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more country codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "country",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more codes for workplace model (arbetsplatstyp), code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "workplace-model",
+            "type": "array"
+          },
+          {
+            "description": "True will return all ads with unspecified workplace in Sweden. False does nothing",
+            "in": "query",
+            "name": "unspecified-sweden-workplace",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads for work outside of Sweden even when searching for places matching Swedish municipality/region/country. False does nothing",
+            "in": "query",
+            "name": "abroad",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow remote work based on phrase matching,\nFalse will only return ads that do not match these phrases\n ",
+            "in": "query",
+            "name": "remote",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return all ads matching the phrase 'Öppen för alla'",
+            "in": "query",
+            "name": "open_for_all",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow trainee work based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "trainee",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow larling work based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "larling",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow franchise work based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "franchise",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely concern rental of a place / chair to work from based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "hire-work-place",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Latitude and longitude in the format \"59.329,18.068\" (latitude,longitude)",
+            "in": "query",
+            "items": {
+              "pattern": "^[-+]?([1-8]?\\d(\\.\\d*)?|90(\\.0*)?),[-+]?(180(\\.0*)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d*)?)$",
+              "type": "string"
+            },
+            "name": "position",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Radius from the specified position (latitude,longitude) in kilometers (km)",
+            "in": "query",
+            "items": {
+              "type": "integer"
+            },
+            "name": "position.radius",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Name or organisation number (numbers only, no dashes or spaces) of employer",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "employer",
+            "type": "array"
+          },
+          {
+            "description": "Freetext query. Search in ad headline, ad description and employer name",
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Fields to freetext search in, in addition to default freetext search (parameter q)\nValid input values: ['occupation', 'skill', 'trait', 'location', 'employer']\nDefault (no input): Search in ad headline, ad description and employer name",
+            "enum": [
+              "occupation",
+              "skill",
+              "trait",
+              "location",
+              "employer"
+            ],
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "qfields",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more employment-duration codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "duration",
+            "type": "array"
+          },
+          {
+            "default": 5,
+            "in": "query",
+            "maximum": 50,
+            "minimum": 0,
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "default": true,
+            "description": "Set to False to disable contextual typeahead (default: True)",
+            "in": "query",
+            "name": "contextual",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "multi",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "label",
+            "type": "array"
+          },
+          {
+            "description": "An optional fields mask",
+            "format": "mask",
+            "in": "header",
+            "name": "X-Fields",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/TypeaheadResults"
+            }
+          }
+        },
+        "tags": [
+          "Open AF-job ads"
+        ]
+      }
+    },
+    "/search": {
+      "get": {
+        "description": "Search using parameters and/or freetext",
+        "operationId": "get_search",
+        "parameters": [
+          {
+            "default": "or",
+            "description": "Boolean method to use for unclassified freetext words. Defaults to \"or\"",
+            "enum": [
+              "and",
+              "or"
+            ],
+            "in": "header",
+            "name": "x-feature-freetext-bool-method",
+            "type": "string"
+          },
+          {
+            "description": "Disables machine learning enriched queries. Freetext becomes traditional freetext query according to the setting of \"x-feature-freetext-bool-method\"",
+            "in": "header",
+            "name": "x-feature-disable-smart-freetext",
+            "type": "boolean"
+          },
+          {
+            "description": "Enables extra search for the current known term in free text to avoid false negatives",
+            "in": "header",
+            "name": "x-feature-enable-false-negative",
+            "type": "boolean"
+          },
+          {
+            "description": "Fetch job ads published before specified date and time (format YYYY-mm-ddTHH:MM:SS)",
+            "in": "query",
+            "name": "published-before",
+            "pattern": "^(\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]))|(\\d+)$",
+            "type": "string"
+          },
+          {
+            "description": "Fetch job ads published after specified date and time. Accepts either datetime (format YYYY-mm-ddTHH:MM:SS) or number of minutes (e.g 60 means published in the last hour)",
+            "in": "query",
+            "name": "published-after",
+            "pattern": "^(\\d\\d\\d\\d-(0?[1-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]))|(\\d+)$",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-name",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational group codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-group",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational area codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-field",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more occupational collections according to the taxonomy. Excludes not matching occupations, groups, fields",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "occupation-collection",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more competency codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "skill",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more language codes according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "language",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more codes for worktime extent, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "worktime-extent",
+            "type": "array"
+          },
+          {
+            "description": "For part-time jobs, minimum extent in percent (for example 50 for 50%)",
+            "in": "query",
+            "name": "parttime.min",
+            "type": "number"
+          },
+          {
+            "description": "For part-time jobs, maximum extent in percent (for example 100 for 100%)",
+            "in": "query",
+            "name": "parttime.max",
+            "type": "number"
+          },
+          {
+            "description": "Set to true if driving licence required, false if not",
+            "in": "query",
+            "name": "driving-license-required",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more types of demanded driving licenses, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "driving-license",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Employment type, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "employment-type",
+            "type": "array"
+          },
+          {
+            "description": "Input 'false' to filter jobs that don't require experience",
+            "in": "query",
+            "name": "experience",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more municipality codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "municipality",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more region codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "region",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more country codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "country",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more codes for workplace model (arbetsplatstyp), code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "workplace-model",
+            "type": "array"
+          },
+          {
+            "description": "True will return all ads with unspecified workplace in Sweden. False does nothing",
+            "in": "query",
+            "name": "unspecified-sweden-workplace",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads for work outside of Sweden even when searching for places matching Swedish municipality/region/country. False does nothing",
+            "in": "query",
+            "name": "abroad",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow remote work based on phrase matching,\nFalse will only return ads that do not match these phrases\n ",
+            "in": "query",
+            "name": "remote",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return all ads matching the phrase 'Öppen för alla'",
+            "in": "query",
+            "name": "open_for_all",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow trainee work based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "trainee",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow larling work based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "larling",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely to allow franchise work based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "franchise",
+            "type": "boolean"
+          },
+          {
+            "description": "True will return ads which are likely concern rental of a place / chair to work from based on phrase matching,\nFalse will only return ads that do not match these phrases\n",
+            "in": "query",
+            "name": "hire-work-place",
+            "type": "boolean"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Latitude and longitude in the format \"59.329,18.068\" (latitude,longitude)",
+            "in": "query",
+            "items": {
+              "pattern": "^[-+]?([1-8]?\\d(\\.\\d*)?|90(\\.0*)?),[-+]?(180(\\.0*)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d*)?)$",
+              "type": "string"
+            },
+            "name": "position",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Radius from the specified position (latitude,longitude) in kilometers (km)",
+            "in": "query",
+            "items": {
+              "type": "integer"
+            },
+            "name": "position.radius",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Name or organisation number (numbers only, no dashes or spaces) of employer",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "employer",
+            "type": "array"
+          },
+          {
+            "description": "Freetext query. Search in ad headline, ad description and employer name",
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Fields to freetext search in, in addition to default freetext search (parameter q)\nValid input values: ['occupation', 'skill', 'trait', 'location', 'employer']\nDefault (no input): Search in ad headline, ad description and employer name",
+            "enum": [
+              "occupation",
+              "skill",
+              "trait",
+              "location",
+              "employer"
+            ],
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "qfields",
+            "type": "array"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more employment-duration codes, code according to the taxonomy",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "duration",
+            "type": "array"
+          },
+          {
+            "description": "Set a result relevance threshold between 0 and 1",
+            "in": "query",
+            "name": "relevance-threshold",
+            "type": "number"
+          },
+          {
+            "description": "Show 'full' (default) or 'brief' results details",
+            "enum": [
+              "full",
+              "brief"
+            ],
+            "in": "query",
+            "name": "resdet",
+            "type": "string"
+          },
+          {
+            "default": 0,
+            "description": "The offset parameter defines the offset from the first result you want to fetch. Valid range is (0-2000)",
+            "in": "query",
+            "maximum": 2000,
+            "minimum": 0,
+            "name": "offset",
+            "type": "integer"
+          },
+          {
+            "default": 10,
+            "description": "Number of results to fetch. Valid range is (0-100)",
+            "in": "query",
+            "maximum": 100,
+            "minimum": 0,
+            "name": "limit",
+            "type": "integer"
+          },
+          {
+            "description": "Sorting.\nrelevance: relevance (points) (default sorting)\npubdate-desc: published date, descending (newest job ad first)\npubdate-asc: published date, ascending (oldest job ad first)\napplydate-desc: last apply date, descending (newest apply date first)\napplydate-asc: last apply date, descending (oldest apply date first, few days left for application)\nupdated: sort by update date (descending)\n",
+            "enum": [
+              "relevance",
+              "pubdate-desc",
+              "pubdate-asc",
+              "applydate-desc",
+              "applydate-asc",
+              "updated",
+              "id"
+            ],
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "Show statistics for specified fields (available fields: occupation-name, occupation-group, occupation-field, country, municipality and region)",
+            "enum": [
+              "occupation-name",
+              "occupation-group",
+              "occupation-field",
+              "country",
+              "municipality",
+              "region"
+            ],
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "stats",
+            "type": "array"
+          },
+          {
+            "description": "Maximum number of statistical rows per field",
+            "in": "query",
+            "maximum": 30,
+            "minimum": 0,
+            "name": "stats.limit",
+            "type": "integer"
+          },
+          {
+            "collectionFormat": "multi",
+            "description": "One or more label strings, to filter ads by label",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "label",
+            "type": "array"
+          },
+          {
+            "description": "An optional fields mask",
+            "format": "mask",
+            "in": "header",
+            "name": "X-Fields",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchResults"
+            }
+          }
+        },
+        "tags": [
+          "Open AF-job ads"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "responses": {
+    "MaskError": {
+      "description": "When any error occurs on mask"
+    },
+    "ParseError": {
+      "description": "When a mask can't be parsed"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "Search and retrieve Arbetsförmedlingens (AF) job ads. Used for online operations.",
+      "name": "Open AF-job ads"
+    }
+  ]
+}
