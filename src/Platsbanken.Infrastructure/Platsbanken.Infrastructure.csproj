@@ -3,6 +3,7 @@
     <Description>HTTP adapters for the JobTech JobSearch and JobStream APIs.</Description>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
     <ProjectReference Include="..\Platsbanken.Application\Platsbanken.Application.csproj" />
     <PackageReference Include="Microsoft.Extensions.Http" />
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" />
